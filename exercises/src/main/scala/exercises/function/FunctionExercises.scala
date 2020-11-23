@@ -28,7 +28,7 @@ object FunctionExercises {
   // Note: Try to use a higher-order function from the String API
   //       You can test this function in FunctionExercisesTest.scala
   def secret(text: String): String =
-    ???
+    text.map(_ => '*')
 
   def isValidUsernameCharacter(char: Char): Boolean =
     char.isLetterOrDigit || char == '-' || char == '_'
@@ -38,7 +38,7 @@ object FunctionExercises {
   // but     isValidUsername("*john*") == false
   // Note: Try to use `isValidUsernameCharacter` and a higher-order function from the String API.
   def isValidUsername(username: String): Boolean =
-    ???
+    username.forall(isValidUsernameCharacter)
 
   ///////////////////////
   // Exercise 2: Point
@@ -229,11 +229,12 @@ object FunctionExercises {
     for { i <- xs.indices } xs(i) = xs(i) + 1
 
   // 5h. does `incAll` respect the functional subset? why?
-  def incAll(value: Any): Any = value match {
-    case x: Int    => x + 1
-    case x: Long   => x + 1
-    case x: Double => x + 1
-  }
+  def incAll(value: Any): Any =
+    value match {
+      case x: Int    => x + 1
+      case x: Long   => x + 1
+      case x: Double => x + 1
+    }
 
   /////////////////////////////////
   // Exercise 6: Memoization
